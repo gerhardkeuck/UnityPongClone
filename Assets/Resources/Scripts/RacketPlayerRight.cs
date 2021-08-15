@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RacketPlayerRight : MonoBehaviour
@@ -20,13 +18,18 @@ public class RacketPlayerRight : MonoBehaviour
         float targetY = target.position.y;
         float selfY = transform.position.y;
         float v = 0;
-        if (targetY > selfY)
+        if (Mathf.Abs(targetY - selfY) > 50)
         {
-            v = 1;
-        } else if (targetY < selfY)
-        {
-            v = -1;
+            if (targetY > selfY)
+            {
+                v = 1;
+            }
+            else if (targetY < selfY)
+            {
+                v = -1;
+            }
         }
+
         _rigidbody2D.velocity = new Vector2(0, v) * movementSpeed;
     }
 }
